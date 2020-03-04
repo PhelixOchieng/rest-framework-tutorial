@@ -2,8 +2,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from users.models import User
-from ..serializers import UserSerializer
-from posts.api.serializers import PostSerializer
+from ..serializers import UserSerializer, PostSerializer
 
 
 class UserListView(generics.ListAPIView):
@@ -21,7 +20,9 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         data = serializer.data
-        posts = PostSerializer(instance.post_set.all, many=True)
+        posts = PostSerializer(instance.post_set.all(), many=True)
+
+        # print(posts.data)
 
         response = {
             'status_code': status.HTTP_200_OK,
@@ -55,3 +56,4 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
         }
 
         return Response(response)
+

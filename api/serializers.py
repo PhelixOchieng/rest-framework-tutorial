@@ -8,10 +8,15 @@ from posts.models import Post
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'email', 'username')
+        fields = ('id', 'username', 'email')
 
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('user', 'title', 'content', 'is_featured', 'image')
+    
+
+    # def create(self, instance, validated_data):
+    #     user = instance
+    #     print(user)

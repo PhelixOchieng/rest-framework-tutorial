@@ -1,9 +1,12 @@
 from django.urls import path
+from rest_framework.authtoken.views import obtain_auth_token
 
 from .views import users as user_views
 from .views import posts as post_views
 
 urlpatterns = [
+    path('request-token/', obtain_auth_token),
+    
     path('users/', user_views.UserListView.as_view()),
     path('users/<int:pk>/', user_views.UserDetailView.as_view()),
 
