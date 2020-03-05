@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 
 from posts.models import Post
-from .utils import get_user_from_token
+from blog.utils import get_user_from_token
 
 def is_owner(func):
     def wrapper(context, request, *args, **kwargs):

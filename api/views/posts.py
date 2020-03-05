@@ -2,10 +2,10 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
+from blog.utils import get_user_from_token
 from posts.models import Post
 
 from .. import serializers
-from ..utils import get_user_from_token
 from ..decorators import is_owner
 
 

@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('title', 'content', 'is_featured', 'image')
+        fields = ('title', 'content', 'image', 'is_featured', 'time_created', 'time_modified')
 
     def save(self, **kwargs):
         super(PostSerializer, self).save(**kwargs)
