@@ -3,6 +3,7 @@ from rest_framework.response import Response
 
 from users.models import User
 from ..serializers import UserSerializer, PostSerializer
+from ..decorators import is_owner
 
 
 class UserListView(generics.ListAPIView):
